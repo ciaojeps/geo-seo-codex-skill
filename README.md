@@ -2,6 +2,18 @@
 
 A Codex skill for SEO and GEO (Generative Engine Optimization) work on websites.
 
+```text
+        ____  _____ ___        ____  _____ ___
+       / ___|| ____/ _ \      / ___|| ____/ _ \
+      | |  _ |  _|| | | |_____\___ \|  _|| | | |
+      | |_| || |__| |_| |_____|___) | |__| |_| |
+       \____||_____\___/     |____/|_____\___/
+
+          crawlable      citable      trackable
+       robots.txt  +  llms.txt  +  schema.org
+            AI referrals  ->  GA4 signal
+```
+
 It supports audits and implementation work for:
 
 - AI search visibility
@@ -13,6 +25,7 @@ It supports audits and implementation work for:
 - entity and brand authority
 - multilingual SEO with canonical and hreflang
 - sitemap checks
+- AI/LLM referral tracking in GA4
 - client-ready GEO/SEO reports
 
 ## Install
@@ -42,6 +55,10 @@ Audit my site for GEO and AI search visibility.
 
 ```text
 Add schema, llms.txt, sitemap, robots.txt, and better metadata to this repo.
+```
+
+```text
+Track ChatGPT, Perplexity, Gemini, Claude, and Copilot referrals in GA4.
 ```
 
 ## Structure

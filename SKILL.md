@@ -58,6 +58,52 @@ Read references only as needed:
    - Entity authority: consistent name, role, company, social profiles, client/proof signals, and external references.
    - Platform readiness: content can answer comparison, definition, “who is”, “what does”, “how to”, and “best for” queries.
 
+## AI Referral Tracking In GA4
+
+Use this section when the user asks to track traffic from ChatGPT, Perplexity, Gemini, Claude, Copilot, AI Overviews, or other LLM/search assistants.
+
+Important assumptions:
+
+- AI referral attribution is incomplete. Some tools send `utm_source` or referrer values, while others remove referrer data and appear as `Direct`.
+- Do not rely only on automatic `utm_source=chatgpt.com`; treat it as one signal among referrer, landing page, server logs, and direct-traffic spikes.
+- Keep canonical URLs clean. Add UTM parameters only to links intentionally shared in campaigns, prompts, directories, or controlled content.
+
+Recommended implementation:
+
+- Detect AI traffic client-side from `utm_source`, `utm_medium`, `utm_campaign`, `source`, `ref`, and `document.referrer`.
+- Track a GA4 event such as `ai_referral_detected` with parameters:
+  - `ai_source`
+  - `ai_source_label`
+  - `ai_detected_by`
+  - `page_location`
+  - `referrer`
+  - `utm_source`
+  - `utm_medium`
+  - `utm_campaign`
+- Persist detection in `sessionStorage` so the site can preserve context after navigation without rewriting canonical URLs.
+- Optionally show a small contextual note on the landing page when the visitor appears to come from an AI assistant.
+
+GA4 reporting setup:
+
+- In Traffic acquisition, switch the dimension to `Session source / medium` and search for values like `chatgpt`, `perplexity`, `gemini`, `claude`, `copilot`, or `openai`.
+- Create an Exploration with `Session source`, `Session source / medium`, and `Landing page + query string`; use metrics such as Sessions, Engagement rate, Active users, and Key events.
+- Use a regex filter such as:
+
+```text
+.*(chatgpt\.com|chat\.openai\.com|openai\.com|gemini\.google\.com|perplexity\.ai|copilot\.microsoft\.com|claude\.ai|anthropic\.com|you\.com).*
+```
+
+- Create a custom channel group named `AI Traffic`; place it above generic `Referral` so AI sources are not merged into normal referral traffic.
+- Review direct-traffic spikes and landing pages cited by AI tools, because untagged AI clicks can look like direct visits.
+
+Suggested controlled UTM format:
+
+```text
+https://example.com/?utm_source=chatgpt&utm_medium=ai_referral&utm_campaign=llm_visibility
+```
+
+Reference concept: Rankshift, “How to Track ChatGPT Referrals in GA4”, published January 26, 2026 and updated January 27, 2026.
+
 5. **Prioritize**
    - `P0`: prevents indexing/crawling or misidentifies the entity.
    - `P1`: blocks AI understanding/citation or weakens trust materially.
