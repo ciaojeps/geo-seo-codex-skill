@@ -1,6 +1,6 @@
-# GEO SEO Codex Skill
+# GEO SEO + GA4 AI Referral Tracking Codex Skill
 
-A Codex skill for SEO and GEO (Generative Engine Optimization) work on websites.
+A Codex skill for SEO, GEO (Generative Engine Optimization), and GA4 AI/LLM referral tracking on websites.
 
 ```text
         ____  _____ ___        ____  _____ ___
